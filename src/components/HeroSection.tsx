@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone } from "lucide-react";
 import heroImage from "@/assets/hero-industrial.jpg";
@@ -38,10 +39,10 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
             <Button variant="hero" size="xl" asChild>
-              <a href="#contact">
+              <Link to="/contact">
                 Get a Quote
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
               <a href="tel:+919876543210">
