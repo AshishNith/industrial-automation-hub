@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
 
 const quickLinks = [
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "Technologies", href: "#technologies" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Industries", href: "/industries" },
+  { label: "Technologies", href: "/technologies" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const services = [
@@ -27,14 +28,14 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-accent rounded-md flex items-center justify-center">
                 <span className="text-accent-foreground font-heading font-bold text-xl">IA</span>
               </div>
               <div>
                 <span className="font-heading font-semibold text-lg">IndustrialAuto</span>
               </div>
-            </div>
+            </Link>
             <p className="text-primary-foreground/70 text-sm mb-6 leading-relaxed">
               A leading industrial automation and engineering solutions company based in India, 
               delivering custom automation systems for manufacturing excellence.
@@ -70,12 +71,12 @@ export function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a 
-                    href={link.href}
+                  <Link 
+                    to={link.href}
                     className="text-primary-foreground/70 hover:text-accent text-sm transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
