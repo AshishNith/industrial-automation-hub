@@ -13,6 +13,7 @@ const Services = () => {
           title="Our Services"
           subtitle="Comprehensive industrial automation and engineering solutions tailored to your needs"
           breadcrumb={[{ label: "Services" }]}
+          showImage={true}
         />
         <ServicesSection />
         <CTASection />

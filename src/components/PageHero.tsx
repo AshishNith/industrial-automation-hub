@@ -1,23 +1,41 @@
 import { ArrowDown, Cpu, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-industrial.jpg";
 
 interface PageHeroProps {
   title: string;
   subtitle?: string;
   breadcrumb?: { label: string; href?: string }[];
+  backgroundImage?: string;
+  showImage?: boolean;
 }
 
-export function PageHero({ title, subtitle, breadcrumb }: PageHeroProps) {
+export function PageHero({ title, subtitle, breadcrumb, backgroundImage = heroImage, showImage = true }: PageHeroProps) {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
-      {/* Dynamic Gradient Background */}
-      <div className="absolute inset-0 gradient-industrial">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(59,130,246,0.1)_50%,transparent_70%)]" />
+      {/* Background Image Layer */}
+      {showImage && (
+        <div className="absolute inset-0 z-0">
+          <img
+            src={backgroundImage}
+            alt="Industrial automation background"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-industrial-dark/95 via-industrial-dark/85 to-industrial-dark/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-industrial-dark/20 to-industrial-dark/60" />
+        </div>
+      )}
+
+      {/* Dynamic Gradient Background (fallback or overlay) */}
+      <div className={`absolute inset-0 ${showImage ? 'z-[1]' : 'z-0'}`}>
+        <div className={`absolute inset-0 ${showImage ? 'bg-industrial-dark/30' : 'gradient-industrial'}`}>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.1),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(59,130,246,0.1)_50%,transparent_70%)]" />
+        </div>
       </div>
 
       {/* Animated Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.15]">
+      <div className={`absolute inset-0 opacity-[0.15] ${showImage ? 'z-[2]' : 'z-[1]'}`}>
         <div 
           className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)]" 
           style={{
@@ -28,7 +46,7 @@ export function PageHero({ title, subtitle, breadcrumb }: PageHeroProps) {
       </div>
 
       {/* Advanced Circuit Decorations */}
-      <div className="absolute top-16 left-8 w-40 h-40 opacity-20 animate-pulse">
+      <div className={`absolute top-16 left-8 w-40 h-40 opacity-20 animate-pulse ${showImage ? 'z-[3]' : 'z-[2]'}`}>
         <svg viewBox="0 0 120 120" className="w-full h-full text-primary-foreground">
           <defs>
             <linearGradient id="circuitGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -49,7 +67,7 @@ export function PageHero({ title, subtitle, breadcrumb }: PageHeroProps) {
         </svg>
       </div>
 
-      <div className="absolute bottom-8 right-8 w-48 h-48 opacity-15 animate-pulse" style={{animationDelay: '1s'}}>
+      <div className={`absolute bottom-8 right-8 w-48 h-48 opacity-15 animate-pulse ${showImage ? 'z-[3]' : 'z-[2]'}`} style={{animationDelay: '1s'}}>
         <svg viewBox="0 0 120 120" className="w-full h-full text-accent">
           <defs>
             <linearGradient id="circuitGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -71,17 +89,17 @@ export function PageHero({ title, subtitle, breadcrumb }: PageHeroProps) {
       </div>
 
       {/* Floating Tech Elements */}
-      <div className="absolute top-1/4 right-24 animate-float">
+      <div className={`absolute top-1/4 right-24 animate-float ${showImage ? 'z-[3]' : 'z-[2]'}`}>
         <Cpu className="w-6 h-6 text-accent/60" />
       </div>
-      <div className="absolute bottom-1/3 left-24 animate-float" style={{animationDelay: '1.5s'}}>
+      <div className={`absolute bottom-1/3 left-24 animate-float ${showImage ? 'z-[3]' : 'z-[2]'}`} style={{animationDelay: '1.5s'}}>
         <Zap className="w-5 h-5 text-primary-foreground/50" />
       </div>
-      <div className="absolute top-1/2 right-32 w-4 h-4 bg-accent/30 rounded-full animate-ping" />
-      <div className="absolute bottom-1/4 left-32 w-3 h-3 border-2 border-primary-foreground/40 rotate-45 animate-spin" style={{animationDuration: '8s'}} />
+      <div className={`absolute top-1/2 right-32 w-4 h-4 bg-accent/30 rounded-full animate-ping ${showImage ? 'z-[3]' : 'z-[2]'}`} />
+      <div className={`absolute bottom-1/4 left-32 w-3 h-3 border-2 border-primary-foreground/40 rotate-45 animate-spin ${showImage ? 'z-[3]' : 'z-[2]'}`} style={{animationDuration: '8s'}} />
 
       {/* Content */}
-      <div className="container-wide relative z-10">
+      <div className={`container-wide relative ${showImage ? 'z-10' : 'z-10'}`}>
         <div className="max-w-5xl">
           {/* Breadcrumb */}
           {breadcrumb && breadcrumb.length > 0 && (
