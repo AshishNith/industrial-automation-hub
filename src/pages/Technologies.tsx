@@ -12,6 +12,7 @@ const Technologies = () => {
         <PageHero 
           title="Technologies & Expertise"
           subtitle="Industry-leading platforms and technologies powering our automation solutions"
+          breadcrumb={[{ label: "Technologies" }]}
         />
         <TechnologiesSection />
         <CTASection />

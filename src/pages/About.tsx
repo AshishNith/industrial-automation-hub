@@ -13,6 +13,7 @@ const About = () => {
         <PageHero 
           title="About Us"
           subtitle="A leading industrial automation and engineering solutions company based in India"
+          breadcrumb={[{ label: "About" }]}
         />
         <AboutSection />
         <WhyChooseUsSection />

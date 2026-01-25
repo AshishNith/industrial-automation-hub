@@ -11,6 +11,7 @@ const Contact = () => {
         <PageHero 
           title="Contact Us"
           subtitle="Get in touch with our engineering team for a consultation"
+          breadcrumb={[{ label: "Contact" }]}
         />
         <ContactSection />
       </main>
