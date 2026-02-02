@@ -9,9 +9,11 @@ const navLinks = [
 	{ label: "Home", href: "/" },
 	{ label: "About", href: "/about" },
 	{ label: "Services", href: "/services" },
-	{ label: "Industries", href: "/industries" },
-	{ label: "Technologies", href: "/technologies" },
+	// { label: "Industries", href: "/industries" },
+	// { label: "Technologies", href: "/technologies" },
 	{ label: "Projects", href: "/projects" },
+	{ label: "Previous Projects", href: "/previous-projects" },
+	{ label: "Spare Parts", href: "/spare-parts" },
 	{ label: "Contact", href: "/contact" },
 ];
 

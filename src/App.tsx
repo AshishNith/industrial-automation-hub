@@ -11,6 +11,8 @@ import Services from "./pages/Services";
 import Industries from "./pages/Industries";
 import Technologies from "./pages/Technologies";
 import Projects from "./pages/Projects";
+import PreviousProjects from "./pages/PreviousProjects";
+import SpareParts from "./pages/SpareParts";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -57,6 +59,8 @@ const App = () => {
             <Route path="/industries" element={<Industries />} />
             <Route path="/technologies" element={<Technologies />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/previous-projects" element={<PreviousProjects />} />
+            <Route path="/spare-parts" element={<SpareParts />} />
             <Route path="/contact" element={<Contact />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
