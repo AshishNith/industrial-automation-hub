@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function CTASection() {
   return (
@@ -26,10 +27,10 @@ export function CTASection() {
               className="bg-primary-foreground text-accent hover:bg-primary-foreground/90 shadow-lg"
               asChild
             >
-              <a href="#contact">
+              <Link to="/contact">
                 Request a Consultation
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
