@@ -180,6 +180,16 @@
     animation: grid-move 20s linear infinite;
   }
 
+  .animate-scroll-left {
+    animation: scroll-left 10s linear infinite;
+    will-change: transform;
+    transform: translate3d(0,0,0);
+  }
+
+  .animate-scroll-left:hover {
+    animation-play-state: paused;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -215,6 +225,15 @@
     }
     100% {
       transform: translate(60px, 60px);
+    }
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
     }
   }
 }
