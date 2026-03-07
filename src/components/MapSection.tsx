@@ -8,10 +8,10 @@ interface MapSectionProps {
 
 export function MapSection({ compact = false }: MapSectionProps) {
     const googleMapsUrl =
-        "https://www.google.com/maps?q=Industrial+Area+Phase+II+Pune+Maharashtra+411026+India";
+        "https://www.google.com/maps?q=557,+F+Road,+Adarsh+Nagar,+Baridih,+Jamshedpur,+East+Singhbhum,+Jharkhand+831017";
 
     const embedUrl =
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.5940636748457!2d73.85674031489!3d18.51957498740!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf9a0f0cdb03%3A0xcab5e82d5a5a1f4b!2sPhase+2%2C+Industrial+Area%2C+Hadapsar%2C+Pune%2C+Maharashtra+411028!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin";
+        "https://maps.google.com/maps?q=557,+F+Road,+Adarsh+Nagar,+Baridih,+Jamshedpur,+East+Singhbhum,+Jharkhand+831017&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
     return (
         <section
@@ -60,11 +60,11 @@ export function MapSection({ compact = false }: MapSectionProps) {
                                             Address
                                         </p>
                                         <p className="text-white/90 text-sm leading-relaxed">
-                                            Industrial Area, Phase II
+                                            Building No. 557, F Road Adarsh Nagar
                                             <br />
-                                            Pune, Maharashtra 411026
+                                            Baridih, Jamshedpur
                                             <br />
-                                            India
+                                            East Singhbhum, Jharkhand 831017
                                         </p>
                                     </div>
                                 </div>
