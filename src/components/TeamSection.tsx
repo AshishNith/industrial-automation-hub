@@ -5,7 +5,7 @@ const teamData: GlassCardData[] = [
         id: 1,
         title: "Milind Gupta",
         role: "Lead Automation Engineer",
-        description: "Rajesh brings 15+ years of hands-on experience in PLC architecture and complex industrial robotics integration across automotive and manufacturing lines.",
+        description: "With over 15 years of experience in PLC architecture and complex industrial robotics integration across automotive and manufacturing lines.",
         color: "rgba(249, 115, 22, 0.8)", // Orange accent
         image: "https://res.cloudinary.com/dfn0pzksh/image/upload/v1740949211/WhatsApp_Image_2025-03-03_at_02.04.01_4ccd6632_adramr.jpg",
     },
