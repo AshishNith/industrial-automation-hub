@@ -1,4 +1,4 @@
-import { 
+import {
   ArrowRightLeft,
   Wrench,
   Code
@@ -8,13 +8,13 @@ const services = [
   {
     image: "https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=400",
     title: "Robot Shifting Modification",
-    description: "Your Plant or Line moving from one location to other and there are so many Robots. You want Quick start up then HARI is ready to support you in all kind of uninstallation, Installation",
+    description: "Relocating your plant or production line with multiple robots? A-Robotics Services ensures rapid uninstallation, safe transport, and seamless reinstallation for a quick start-up at any new location.",
     applications: "Plant relocation, line modification, robot reinstallation",
   },
   {
     image: "https://images.pexels.com/photos/159298/gears-cogs-machine-machinery-159298.jpeg?auto=compress&cs=tinysrgb&w=400",
     title: "Robot Repair Activity",
-    description: "To successfully repair industrial robots, HARI will repair robot parts including Yaskawa Motoman, FANUC, ABB, KUKA, Panasonic, and others make. HARI Technicians has the technical knowledge necessary to repair",
+    description: "A-Robotics Services technicians repair and restore industrial robots from all leading manufacturers — Yaskawa Motoman, FANUC, ABB, KUKA, Panasonic, and more — with deep technical knowledge and precision.",
     applications: "Industrial robot maintenance, component repair, troubleshooting",
   },
   {
@@ -26,7 +26,7 @@ const services = [
   {
     image: "https://images.pexels.com/photos/5835359/pexels-photo-5835359.jpeg?auto=compress&cs=tinysrgb&w=400",
     title: "On Site Robot Repair Parts Repairing",
-    description: "HARI technicians repair industrial Robots at Customer site, We have proper team and we have the Robot Parts products, We Service and supply Systems, Our industrial robot Services are very Trustable",
+    description: "A-Robotics Services technicians repair industrial robots directly at your site. We carry essential spare parts and components, providing reliable on-site service and system support you can trust.",
     applications: "On-site maintenance, spare parts supply, field service",
   },
   {
@@ -37,7 +37,7 @@ const services = [
   },
   {
     image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400",
-    title: "Machine Programming Cycle Development/Optimization",
+    title: "Robot Programming Cycle Development/Optimization",
     description: "Our Experienced team Having good experience of Machine Programming And we will support for Machine Software like: Robot Studio, Robot Roboguide, Robotics And many more application and Programming systems",
     applications: "Cycle time optimization, programming software, automation efficiency",
   },
@@ -54,7 +54,7 @@ export function ServicesSection() {
             Comprehensive Robot Automation Solutions
           </h2>
           <p className="section-subtitle mx-auto text-lg">
-            From robot installation to advanced programming, we deliver specialized engineering solutions 
+            From robot installation to advanced programming, we deliver specialized engineering solutions
             that maximize your automation potential and operational efficiency.
           </p>
         </div>
@@ -67,8 +67,8 @@ export function ServicesSection() {
               className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-2xl hover:border-primary/20 transition-all duration-500 group hover:-translate-y-2"
             >
               <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={service.image} 
+                <img
+                  src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -77,7 +77,7 @@ export function ServicesSection() {
                   <span className="text-white font-semibold text-sm">{String(index + 1).padStart(2, '0')}</span>
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="font-heading font-bold text-xl text-foreground mb-4 group-hover:text-primary transition-colors">
                   {service.title}
@@ -85,7 +85,7 @@ export function ServicesSection() {
                 <p className="text-muted-foreground text-sm mb-6 leading-relaxed line-clamp-4">
                   {service.description}
                 </p>
-                
+
                 <div className="pt-4 border-t border-border/50">
                   <div className="flex items-start gap-2">
                     <span className="text-xs font-medium text-primary uppercase tracking-wide flex-shrink-0 mt-1">Applications:</span>

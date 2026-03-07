@@ -1,14 +1,13 @@
-import { 
-  Factory, 
-  Car, 
-  Pill, 
-  UtensilsCrossed, 
-  Zap, 
+import {
+  Factory,
+  Car,
+  Pill,
+  UtensilsCrossed,
+  Zap,
   Droplets,
   Building
 } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 const industries = [
   {
@@ -31,141 +30,124 @@ const industries = [
     name: "Food & Beverage",
     description: "Hygienic processing and packaging systems",
   },
-  {
-    icon: Zap,
-    name: "Power & Energy",
-    description: "Power generation and distribution control",
-  },
-  {
-    icon: Droplets,
-    name: "Water & Wastewater",
-    description: "Treatment plants and pumping stations",
-  },
-  {
-    icon: Building,
-    name: "Infrastructure",
-    description: "Building automation and heavy engineering",
-  },
 ];
 
 export function IndustriesSection() {
-  const trackRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
+    let animationFrameId: number;
 
-    // width of a single set (we duplicated the items)
-    const singleWidth = track.scrollWidth / 2;
-    if (!singleWidth) return;
+    const animate = () => {
+      if (containerRef.current) {
+        // Find all cards by our custom class
+        const cards = containerRef.current.querySelectorAll('.industry-card');
+        const centerX = window.innerWidth / 2;
 
-    const duration = Math.max(20, singleWidth / 100); // adjust speed by width
+        // Define a maximum distance for scaling effect (ensure it doesn't drop off too fast)
+        const maxDistance = Math.max(window.innerWidth / 1.5, 800);
 
-    const anim = gsap.to(track, {
-      x: `-=${singleWidth}`,
-      ease: "none",
-      duration,
-      repeat: -1,
-      modifiers: {
-        x: (x) => {
-          const val = parseFloat(x);
-          const wrapped = gsap.utils.wrap(-singleWidth, 0, val);
-          return `${wrapped}px`;
-        },
-      },
-    });
+        cards.forEach((card) => {
+          const el = card as HTMLElement;
+          const rect = el.getBoundingClientRect();
 
-    const onEnter = () => anim.pause();
-    const onLeave = () => anim.play();
+          // Get the center of the card. Because scale transform is from origin center,
+          // the center X coordinate remains unchanged after scale is applied, making it stable.
+          const cardCenterX = rect.left + rect.width / 2;
 
-    track.addEventListener("mouseenter", onEnter);
-    track.addEventListener("mouseleave", onLeave);
+          // How far from the center is this card?
+          const distance = Math.abs(centerX - cardCenterX);
 
-    const onResize = () => {
-      anim.kill();
-      gsap.set(track, { x: 0 });
-      const newWidth = track.scrollWidth / 2;
-      if (!newWidth) return;
-      const newDuration = Math.max(20, newWidth / 100);
-      gsap.to(track, {
-        x: `-=${newWidth}`,
-        ease: "none",
-        duration: newDuration,
-        repeat: -1,
-        modifiers: {
-          x: (x) => {
-            const val = parseFloat(x);
-            const wrapped = gsap.utils.wrap(-newWidth, 0, val);
-            return `${wrapped}px`;
-          },
-        },
-      });
+          // Calculate ratio (1 at center, 0 at max boundary)
+          const ratio = Math.max(0, 1 - distance / maxDistance);
+
+          // Easing logic for perspective vision:
+          // scale smoothly from 0.85 at edges up to 1.15 at center
+          const scale = 0.9 + (ratio * 0.25);
+          // Opacity drops to 0.4 max at the edges
+          const opacity = 0.4 + (ratio * 0.6);
+          // Blur only kicks in drastically when the card is close to the absolute edge (ratio < 0.6)
+          const blurValue = Math.max(0, (0.6 - ratio) * 6);
+
+          el.style.transform = `scale(${scale})`;
+          el.style.opacity = opacity.toString();
+          el.style.filter = `blur(${blurValue}px)`;
+
+          // Z-index ensures the center card stays above the others
+          el.style.zIndex = Math.round(ratio * 10).toString();
+        });
+      }
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    window.addEventListener("resize", onResize);
+    // Kick off the loop
+    animate();
 
-    return () => {
-      anim.kill();
-      track.removeEventListener("mouseenter", onEnter);
-      track.removeEventListener("mouseleave", onLeave);
-      window.removeEventListener("resize", onResize);
-    };
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
     <section id="industries" className="section-padding bg-background overflow-hidden">
       <div className="container-wide">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Industries</span>
           <h2 className="section-title mt-2 mb-4">
             Industries We Serve
           </h2>
           <p className="section-subtitle mx-auto">
-            Our automation expertise spans across diverse industries, delivering 
+            Our automation expertise spans across diverse industries, delivering
             customized solutions that meet sector-specific requirements and standards.
           </p>
         </div>
+      </div>
 
-        {/* Infinite Horizontal Scroll */}
-        <div className="relative">
-          <div className="flex animate-scroll-left">
-            {/* First set of industries */}
-            {industries.map((industry, index) => (
-              <div
-                key={`first-${industry.name}-${index}`}
-                className="group bg-card border border-border rounded-lg p-5 md:p-6 text-center hover:shadow-md hover:border-primary/30 transition-all duration-300 flex-shrink-0 w-[280px] px-3"
-              >
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-muted group-hover:bg-primary/10 flex items-center justify-center mx-auto mb-4 transition-colors">
-                  <industry.icon className="w-6 h-6 md:w-7 md:h-7 text-steel-dark group-hover:text-primary transition-colors" />
-                </div>
-                <h3 className="font-heading font-semibold text-foreground mb-1">
-                  {industry.name}
-                </h3>
-                <p className="text-xs md:text-sm text-muted-foreground">
-                  {industry.description}
-                </p>
+      {/* Infinite Horizontal Scroll with Perspective */}
+      <div
+        className="relative w-full py-12 -my-12 overflow-hidden"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+        }}
+      >
+        {/* Ref container used for calculating positions */}
+        <div ref={containerRef} className="flex animate-scroll-left gap-6 md:gap-8 pr-6 md:pr-8 w-max">
+          {/* First set of industries */}
+          {industries.map((industry, index) => (
+            <div
+              key={`first-${industry.name}-${index}`}
+              className="industry-card group bg-card border border-border shadow-md rounded-xl p-8 text-center hover:border-primary/50 flex-shrink-0 w-[280px] md:w-[320px] transition-colors origin-center"
+            >
+              <div className="w-16 h-16 rounded-full bg-muted group-hover:bg-primary/10 flex items-center justify-center mx-auto mb-6 transition-colors">
+                <industry.icon className="w-8 h-8 text-steel-dark group-hover:text-primary transition-colors" />
               </div>
-            ))}
-            {/* Duplicate set for seamless loop */}
-            {industries.map((industry, index) => (
-              <div
-                key={`second-${industry.name}-${index}`}
-                className="group bg-card border border-border rounded-lg p-5 md:p-6 text-center hover:shadow-md hover:border-primary/30 transition-all duration-300 flex-shrink-0 w-[280px] px-3"
-                aria-hidden
-              >
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-muted group-hover:bg-primary/10 flex items-center justify-center mx-auto mb-4 transition-colors">
-                  <industry.icon className="w-6 h-6 md:w-7 md:h-7 text-steel-dark group-hover:text-primary transition-colors" />
-                </div>
-                <h3 className="font-heading font-semibold text-foreground mb-1">
-                  {industry.name}
-                </h3>
-                <p className="text-xs md:text-sm text-muted-foreground">
-                  {industry.description}
-                </p>
+              <h3 className="font-heading font-bold text-lg md:text-xl text-foreground mb-3">
+                {industry.name}
+              </h3>
+              <p className="text-sm md:text-base text-muted-foreground">
+                {industry.description}
+              </p>
+            </div>
+          ))}
+
+          {/* Exactly one duplicate set for seamless 50% translation loop */}
+          {industries.map((industry, index) => (
+            <div
+              key={`second-${industry.name}-${index}`}
+              className="industry-card group bg-card border border-border shadow-md rounded-xl p-8 text-center hover:border-primary/50 flex-shrink-0 w-[280px] md:w-[320px] transition-colors origin-center"
+              aria-hidden
+            >
+              <div className="w-16 h-16 rounded-full bg-muted group-hover:bg-primary/10 flex items-center justify-center mx-auto mb-6 transition-colors">
+                <industry.icon className="w-8 h-8 text-steel-dark group-hover:text-primary transition-colors" />
               </div>
-            ))}
-          </div>
+              <h3 className="font-heading font-bold text-lg md:text-xl text-foreground mb-3">
+                {industry.name}
+              </h3>
+              <p className="text-sm md:text-base text-muted-foreground">
+                {industry.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
