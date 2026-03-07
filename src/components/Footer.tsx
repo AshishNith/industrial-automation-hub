@@ -126,8 +126,8 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
             <p>© {currentYear} A-Robotics Services. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
+              <Link to="/privacy-policy" className="hover:text-accent transition-colors">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-accent transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

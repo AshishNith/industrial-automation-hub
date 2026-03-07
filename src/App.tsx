@@ -14,6 +14,8 @@ import Projects from "./pages/Projects";
 import PreviousProjects from "./pages/PreviousProjects";
 import SpareParts from "./pages/SpareParts";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import LoadingScreen from "@/components/LoadingScreen";
 
@@ -36,7 +38,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 300); 
+    }, 300);
 
     return () => clearTimeout(timer);
   }, []);
@@ -62,6 +64,8 @@ const App = () => {
             <Route path="/previous-projects" element={<PreviousProjects />} />
             <Route path="/spare-parts" element={<SpareParts />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
