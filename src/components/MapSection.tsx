@@ -40,7 +40,7 @@ export function MapSection({ compact = false }: MapSectionProps) {
                         <div className="gradient-industrial text-white p-8 lg:p-10 flex flex-col justify-between gap-8">
                             <div>
                                 <h3 className="font-heading text-2xl font-bold mb-2">
-                                    Industrial Automation Hub
+                                    A Robotics Services
                                 </h3>
                                 <p className="text-white/70 text-sm leading-relaxed">
                                     Your trusted partner for industrial automation, PLC
@@ -143,7 +143,7 @@ export function MapSection({ compact = false }: MapSectionProps) {
                             <div className="absolute top-0 left-0 right-0 h-1 gradient-accent z-10" />
 
                             <iframe
-                                title="Industrial Automation Hub Location"
+                                title="A Robotics Services Location"
                                 src={embedUrl}
                                 width="100%"
                                 height="100%"

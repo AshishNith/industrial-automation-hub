@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { MapSection } from "@/components/MapSection";
 import { IndustriesSection } from "@/components/IndustriesSection";
 import { TechnologiesSection } from "@/components/TechnologiesSection";
+import { TeamSection } from "@/components/TeamSection";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <ServicesSection />
         <TechnologiesSection />
         <IndustriesSection />
+        <TeamSection />
         <MapSection />
         <CTASection />
       </main>

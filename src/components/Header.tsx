@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, ChevronDown, Zap } from "lucide-react";
+import { Menu, X, Phone, Zap, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/Logo.png";
+
 
 type NavLink = {
 	label: string;
@@ -58,22 +59,24 @@ export function Header() {
 	const themeTextHover = "hover:text-foreground";
 	const themeBgGlass = transparentMode
 		? "bg-transparent border-transparent"
-		: "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm";
+		: "bg-background/80 backdrop-blur-xl border border-border/50 shadow-lg md:shadow-2xl md:border-accent/10";
 
 	return (
 		<header
 			className={cn(
-				"fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+				"fixed z-50 transition-all duration-500 rounded-none",
+				"top-0 left-0 right-0",
+				isScrolled ? "md:top-4 md:left-4 md:right-4 md:max-w-7xl md:mx-auto md:rounded-[2rem]" : "md:top-0",
 				themeBgGlass
 			)}
 		>
-			<div className="container-wide">
-				<div className="flex items-center justify-between h-20 md:h-24">
+			<div className="px-4 md:px-8">
+				<div className="flex items-center justify-between h-20 md:h-[88px]">
 					{/* ── Logo ── */}
 					<Link to="/" className="flex items-center gap-3 group">
 						<img
 							src={logo}
-							alt="Industrial Automation Hub Logo"
+							alt="A Robotics Services Logo"
 							className="w-12 h-12 md:w-14 md:h-14 object-contain transition-transform group-hover:scale-105"
 						/>
 						<div className="hidden sm:flex flex-col">
@@ -83,7 +86,7 @@ export function Header() {
 									themeText
 								)}
 							>
-								Industrial<span className="text-accent">Auto</span>
+								A-<span className="text-accent">Robotics</span>
 							</span>
 							<span
 								className={cn(
@@ -115,10 +118,10 @@ export function Header() {
 									</Link>
 									{/* Dropdown Menu */}
 									<div className="absolute left-0 top-full pt-3 w-56 opacity-0 translate-y-2 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 transition-all z-50">
-										<div className="bg-card border border-border shadow-2xl rounded-xl p-2 relative flex flex-col gap-1">
+										<div className="bg-card border border-border shadow-2xl rounded-2xl p-2 relative flex flex-col gap-1">
 											<Link
 												to={link.href}
-												className="block px-4 py-2 text-sm font-bold text-foreground hover:bg-accent hover:text-white rounded-lg transition-colors"
+												className="block px-4 py-3 text-sm font-bold text-foreground hover:bg-accent hover:text-white rounded-xl transition-colors"
 											>
 												All {link.label}
 											</Link>
@@ -127,7 +130,7 @@ export function Header() {
 												<Link
 													key={subItem.label}
 													to={`${link.href}?category=${encodeURIComponent(subItem.label)}`}
-													className="block px-4 py-2 text-sm text-foreground/70 hover:bg-accent hover:text-white hover:font-medium rounded-lg transition-colors"
+													className="block px-4 py-3 text-sm font-medium text-foreground/70 hover:bg-accent hover:text-white rounded-xl transition-colors"
 												>
 													{subItem.label}
 												</Link>

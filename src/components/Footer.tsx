@@ -29,34 +29,34 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-accent rounded-md flex items-center justify-center">
-                <span className="text-accent-foreground font-heading font-bold text-xl">IA</span>
+              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                <span className="text-accent-foreground font-heading font-bold text-xl">A-R</span>
               </div>
               <div>
-                <span className="font-heading font-semibold text-lg">IndustrialAuto</span>
+                <span className="font-heading font-semibold text-lg">A-Robotics Services</span>
               </div>
             </Link>
             <p className="text-primary-foreground/70 text-sm mb-6 leading-relaxed">
-              A leading industrial automation and engineering solutions company based in India, 
+              A leading industrial automation and engineering solutions company based in India,
               delivering custom automation systems for manufacturing excellence.
             </p>
             <div className="flex gap-3">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-9 h-9 rounded-md bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-9 h-9 rounded-md bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="w-4 h-4" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-9 h-9 rounded-md bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-colors"
                 aria-label="YouTube"
               >
@@ -71,7 +71,7 @@ export function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-primary-foreground/70 hover:text-accent text-sm transition-colors"
                   >
@@ -124,7 +124,7 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10">
         <div className="container-wide py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
-            <p>© {currentYear} IndustrialAuto Engineering Solutions. All rights reserved.</p>
+            <p>© {currentYear} A-Robotics Services. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>

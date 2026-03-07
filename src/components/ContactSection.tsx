@@ -51,8 +51,8 @@ export function ContactSection() {
   const { submit: onSubmit } = useWeb3Forms({
     access_key: accessKey,
     settings: {
-      from_name: "Industrial Automation Hub",
-      subject: "New Contact Message from Industrial Automation Hub Website",
+      from_name: "A Robotics Services",
+      subject: "New Contact Message from A Robotics Services Website",
     },
     onSuccess: (msg) => {
       setIsSuccess(true);
@@ -84,7 +84,7 @@ export function ContactSection() {
             Get in Touch
           </h2>
           <p className="section-subtitle mx-auto">
-            Have a project in mind or need automation consultation? 
+            Have a project in mind or need automation consultation?
             Reach out to our team and let's discuss how we can help.
           </p>
         </div>
@@ -104,7 +104,7 @@ export function ContactSection() {
                 style={{ display: "none" }}
                 {...register("botcheck")}
               />
-              
+
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -193,10 +193,10 @@ export function ContactSection() {
                   </p>
                 )}
               </div>
-              <Button 
-                type="submit" 
-                variant="accent" 
-                size="lg" 
+              <Button
+                type="submit"
+                variant="accent"
+                size="lg"
                 className="w-full md:w-auto"
                 disabled={isSubmitting}
               >
