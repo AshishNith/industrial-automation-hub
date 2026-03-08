@@ -228,12 +228,21 @@ const SpareParts = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16">
-                <Package className="w-14 h-14 text-muted-foreground/50 mx-auto mb-3" />
-                <h3 className="text-base font-semibold mb-1">No parts found</h3>
-                <p className="text-sm text-muted-foreground">
-                  Try a different search or browse another category.
+              <div className="text-center py-20 px-4 max-w-lg mx-auto bg-muted/30 rounded-2xl border border-dashed border-border mt-8">
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Package className="w-8 h-8 text-muted-foreground/50" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Can't find what you're looking for?</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  We have access to thousands of offline parts across {selectedBrand} and other major robotics manufacturers. Contact our sourcing team for immediate assistance.
                 </p>
+                <Link
+                  to={`/contact?subject=Part Sourcing Request: ${selectedBrand} ${selectedCategory !== 'all' ? selectedCategory : ''} ${searchTerm ? '- ' + searchTerm : ''}`}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary/90 transition-colors shadow-sm"
+                >
+                  Contact Sourcing Team
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             )}
           </div>

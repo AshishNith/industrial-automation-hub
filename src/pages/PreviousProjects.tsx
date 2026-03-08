@@ -5,7 +5,8 @@ import { PageHero } from "@/components/PageHero";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Users, Wrench, ExternalLink } from "lucide-react";
+import { Calendar, MapPin, Users, Wrench, ExternalLink, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PreviousProjects = () => {
   const projects = [
@@ -129,12 +130,12 @@ const PreviousProjects = () => {
     <div className="min-h-screen">
       <Header />
       <main>
-        <PageHero 
+        <PageHero
           title="Previous Projects"
           subtitle="Showcasing our successful automation implementations across various industries"
           breadcrumb={[{ label: "Previous Projects" }]}
         />
-        
+
         {/* Projects Grid */}
         <section className="py-16 bg-background">
           <div className="container-wide">
@@ -150,14 +151,14 @@ const PreviousProjects = () => {
                           <p className="text-sm">Project Image</p>
                         </div>
                       </div>
-                      <Badge 
-                        variant="secondary" 
+                      <Badge
+                        variant="secondary"
                         className="absolute top-4 right-4 bg-green-100 text-green-800 border-green-200"
                       >
                         {project.status}
                       </Badge>
                     </div>
-                    
+
                     {/* Project Details */}
                     <CardContent className="p-6 lg:p-8">
                       <CardHeader className="p-0 mb-6">
@@ -173,7 +174,7 @@ const PreviousProjects = () => {
                           {project.description}
                         </CardDescription>
                       </CardHeader>
-                      
+
                       {/* Project Metadata */}
                       <div className="grid sm:grid-cols-2 gap-4 mb-6">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -193,7 +194,7 @@ const PreviousProjects = () => {
                           <span>{project.client}</span>
                         </div>
                       </div>
-                      
+
                       {/* Project Results */}
                       <div className="mb-6">
                         <h4 className="font-semibold mb-3">Key Results:</h4>
@@ -206,12 +207,16 @@ const PreviousProjects = () => {
                           ))}
                         </ul>
                       </div>
-                      
+
                       {/* Action Button */}
-                      <Button variant="outline" className="gap-2">
-                        <ExternalLink className="w-4 h-4" />
-                        View Case Study
-                      </Button>
+                      <Link
+                        to={`/contact?subject=Inquiry about ${encodeURIComponent(project.title)}`}
+                      >
+                        <Button variant="outline" className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors group">
+                          Discuss this project
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
                     </CardContent>
                   </div>
                 </Card>
@@ -219,7 +224,7 @@ const PreviousProjects = () => {
             </div>
           </div>
         </section>
-        
+
         <CTASection />
       </main>
       <Footer />
