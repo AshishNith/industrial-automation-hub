@@ -3,7 +3,7 @@ import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { Search, ChevronDown, ArrowRight, Package } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { allParts, brands, subcategories } from "@/data/sparePartsData";
 
 // Images for product cards
@@ -22,11 +22,28 @@ function getPartImage(index: number): string {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const SpareParts = () => {
-  const [selectedBrand, setSelectedBrand] = useState<string>("ABB");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const brandParam = searchParams.get("brand") || "ABB";
+  const categoryParam = searchParams.get("category") || "all";
+
+  const [selectedBrand, setSelectedBrand] = useState<string>(brandParam);
+  const [selectedCategory, setSelectedCategory] = useState<string>(categoryParam);
   const [searchTerm, setSearchTerm] = useState("");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Sync state with URL parameters
+  useEffect(() => {
+    setSelectedBrand(brandParam);
+    setSelectedCategory(categoryParam);
+  }, [brandParam, categoryParam]);
+
+  const updateParams = (newBrand: string, newCategory: string) => {
+    const params = new URLSearchParams();
+    if (newBrand !== "all") params.set("brand", newBrand);
+    if (newCategory !== "all") params.set("category", newCategory);
+    setSearchParams(params);
+  };
 
   useEffect(() => {
     const handler = () => setOpenDropdown(null);
@@ -35,7 +52,7 @@ const SpareParts = () => {
   }, []);
 
   const filteredParts = allParts.filter((p) => {
-    const matchesBrand = p.brand === selectedBrand;
+    const matchesBrand = selectedBrand === "all" || p.brand === selectedBrand;
     const matchesCat =
       selectedCategory === "all" || p.category === selectedCategory;
     const matchesSearch =
@@ -55,8 +72,7 @@ const SpareParts = () => {
   };
 
   const selectBrandCategory = (brand: string, cat: string) => {
-    setSelectedBrand(brand);
-    setSelectedCategory(cat);
+    updateParams(brand, cat);
     setOpenDropdown(null);
   };
 
@@ -77,7 +93,7 @@ const SpareParts = () => {
         </section>
 
         {/* ─── Brand Navigation Bar ──────────────────────────────────── */}
-        <div className="sticky top-[64px] z-30 bg-card/95 backdrop-blur-md border-b border-border">
+        <div className="sticky top-20 md:top-[88px] z-30 bg-card/95 backdrop-blur-md border-b border-border">
           <div className="container-wide">
             <div
               className="flex items-center gap-0.5 py-2 overflow-x-auto"
@@ -88,6 +104,19 @@ const SpareParts = () => {
             >
               <style>{`.brand-scroll::-webkit-scrollbar { display: none; }`}</style>
               <div className="brand-scroll flex items-center gap-0.5 overflow-x-auto w-full" style={{ scrollbarWidth: "none" }}>
+                {/* All Brands Option */}
+                <div className="relative flex-shrink-0">
+                  <button
+                    onClick={() => updateParams("all", selectedCategory)}
+                    className={`flex items-center gap-1 px-3 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all duration-200 ${selectedBrand === "all"
+                      ? "bg-primary text-primary-foreground shadow"
+                      : "text-foreground/70 hover:bg-muted hover:text-foreground"
+                      }`}
+                  >
+                    All Brands
+                  </button>
+                </div>
+
                 {brands.map((brand) => (
                   <div
                     key={brand.name}
@@ -97,10 +126,7 @@ const SpareParts = () => {
                     onClick={(e) => e.stopPropagation()}
                   >
                     <button
-                      onClick={() => {
-                        setSelectedBrand(brand.name);
-                        setSelectedCategory("all");
-                      }}
+                      onClick={() => updateParams(brand.name, selectedCategory)}
                       className={`flex items-center gap-1 px-3 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all duration-200 ${selectedBrand === brand.name
                         ? "bg-primary text-primary-foreground shadow"
                         : "text-foreground/70 hover:bg-muted hover:text-foreground"
@@ -156,13 +182,13 @@ const SpareParts = () => {
             <div className="flex items-center gap-2 text-sm">
               <span className="text-muted-foreground">Viewing:</span>
               <span className="px-2.5 py-1 rounded bg-primary/10 text-primary font-medium text-xs">
-                {selectedBrand}
+                {selectedBrand === "all" ? "All Brands" : selectedBrand}
               </span>
               {selectedCategory !== "all" && (
                 <span className="px-2.5 py-1 rounded bg-accent/15 text-accent font-medium text-xs flex items-center gap-1">
                   {selectedCategory}
                   <button
-                    onClick={() => setSelectedCategory("all")}
+                    onClick={() => updateParams(selectedBrand, "all")}
                     className="hover:text-foreground transition-colors font-bold"
                   >
                     ×
@@ -180,7 +206,7 @@ const SpareParts = () => {
         <section className="py-8 md:py-12 bg-background">
           <div className="container-wide">
             <h2 className="text-xl md:text-2xl font-heading font-bold text-foreground mb-6 flex items-center gap-2">
-              {selectedBrand}
+              {selectedBrand === "all" ? "All Manufacturers" : selectedBrand}
               {selectedCategory !== "all" && (
                 <span className="text-muted-foreground font-normal text-lg">
                   / {selectedCategory}

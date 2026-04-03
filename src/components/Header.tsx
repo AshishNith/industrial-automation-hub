@@ -120,7 +120,7 @@ export function Header() {
 									<div className="absolute left-0 top-full pt-3 w-56 opacity-0 translate-y-2 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 transition-all z-50">
 										<div className="bg-card border border-border shadow-2xl rounded-2xl p-2 relative flex flex-col gap-1">
 											<Link
-												to={link.href}
+												to={`${link.href}?brand=all`}
 												className="block px-4 py-3 text-sm font-bold text-foreground hover:bg-accent hover:text-white rounded-xl transition-colors"
 											>
 												All {link.label}
@@ -129,7 +129,7 @@ export function Header() {
 											{link.dropdown.map((subItem) => (
 												<Link
 													key={subItem.label}
-													to={`${link.href}?category=${encodeURIComponent(subItem.label)}`}
+													to={`${link.href}?category=${encodeURIComponent(subItem.label)}&brand=all`}
 													className="block px-4 py-3 text-sm font-medium text-foreground/70 hover:bg-accent hover:text-white rounded-xl transition-colors"
 												>
 													{subItem.label}
