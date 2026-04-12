@@ -43,4 +43,3 @@ npm run build
 This command outputs the minified static build to the `dist` directory.
 
 ---
-*Note: This project was initially scaffolded using [Lovable](https://lovable.dev).*
