@@ -25,7 +25,7 @@ Ensure you have the following installed to run and build the project:
 
 ```sh
 # Clone the repository
-git clone <YOUR_GIT_URL>
+git clone https://github.com/AshishNith/industrial-automation-hub.git
 cd industrial-automation-hub
 
 # Install the necessary dependencies
