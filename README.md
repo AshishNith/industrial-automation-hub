@@ -1,73 +1,46 @@
-# Welcome to your Lovable project
+# A Robotics Services (Industrial Automation Hub)
 
-## Project info
+This project is the frontend interface for A Robotics Services, offering a modern, responsive web application built to navigate industrial automation parts, view team information, and explore robotics services. 
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Features
+- **Modern User Interface**: Built with React and styled gracefully using Tailwind CSS and shadcn/ui.
+- **Fast and Optimized**: Bootstrapped with Vite and developed in TypeScript for type safety and speed.
+- **Responsive Layout**: Designed to work effortlessly across multiple device screen sizes.
 
-## How can I edit this code?
+## Technologies Used
+- React (v18)
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui frameworks
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+### Prerequisites
+Ensure you have the following installed to run and build the project:
+*   [Node.js](https://nodejs.org/en) (v18 or higher recommended)
+*   npm
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Running Locally
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
+cd industrial-automation-hub
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install the necessary dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Building for Production
+To build a production-ready bundle, run:
+```sh
+npm run build
+```
+This command outputs the minified static build to the `dist` directory.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+*Note: This project was initially scaffolded using [Lovable](https://lovable.dev).*
