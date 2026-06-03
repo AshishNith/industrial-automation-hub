@@ -21,7 +21,7 @@ const PreviousProjects = () => {
       team: 12,
       technologies: ["PLC Programming", "SCADA", "Robotics", "Vision Systems"],
       status: "Completed",
-      image: "/api/placeholder/600/400",
+      image: "/projects/automotive-assembly.png",
       results: [
         "40% increase in production efficiency",
         "60% reduction in defects",
@@ -40,7 +40,7 @@ const PreviousProjects = () => {
       team: 8,
       technologies: ["IoT Sensors", "Cloud Integration", "Data Analytics", "Machine Learning"],
       status: "Completed",
-      image: "/api/placeholder/600/400",
+      image: "/projects/smart-factory.png",
       results: [
         "30% reduction in downtime",
         "50% improvement in maintenance scheduling",
@@ -59,7 +59,7 @@ const PreviousProjects = () => {
       team: 6,
       technologies: ["Process Control", "Safety Systems", "HMI/SCADA", "Temperature Control"],
       status: "Completed",
-      image: "/api/placeholder/600/400",
+      image: "/projects/food-processing.png",
       results: [
         "35% faster processing time",
         "100% compliance with food safety standards",
@@ -78,7 +78,7 @@ const PreviousProjects = () => {
       team: 10,
       technologies: ["Clean Room Controls", "Environmental Monitoring", "Validation Systems", "GMP Compliance"],
       status: "Completed",
-      image: "/api/placeholder/600/400",
+      image: "/projects/pharma-cleanroom.png",
       results: [
         "99.9% environmental compliance",
         "Reduced contamination risk by 80%",
@@ -97,7 +97,7 @@ const PreviousProjects = () => {
       team: 15,
       technologies: ["SCADA Systems", "Leak Detection", "Safety Instrumented Systems", "Remote Monitoring"],
       status: "Completed",
-      image: "/api/placeholder/600/400",
+      image: "/projects/pipeline-monitoring.png",
       results: [
         "Zero pipeline incidents",
         "24/7 monitoring coverage",
@@ -116,7 +116,7 @@ const PreviousProjects = () => {
       team: 9,
       technologies: ["Water Quality Monitoring", "Process Automation", "SCADA", "Remote Control"],
       status: "Completed",
-      image: "/api/placeholder/600/400",
+      image: "/projects/water-treatment.png",
       results: [
         "99.5% water quality standards met",
         "30% reduction in chemical usage",
@@ -144,13 +144,12 @@ const PreviousProjects = () => {
                 <Card key={project.id} className="overflow-hidden">
                   <div className="grid lg:grid-cols-2 gap-0">
                     {/* Project Image */}
-                    <div className="relative">
-                      <div className="h-64 lg:h-full bg-muted flex items-center justify-center">
-                        <div className="text-muted-foreground">
-                          <Wrench className="w-16 h-16 mx-auto mb-4" />
-                          <p className="text-sm">Project Image</p>
-                        </div>
-                      </div>
+                    <div className="relative h-72 lg:h-auto min-h-[320px] overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
                       <Badge
                         variant="secondary"
                         className="absolute top-4 right-4 bg-green-100 text-green-800 border-green-200"

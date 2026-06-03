@@ -53,13 +53,11 @@ export function Header() {
 	const isHome = location.pathname === "/";
 	const transparentMode = isHome && !isScrolled;
 
-	// With the bright background, we always use standard text colors.
-	const themeText = "text-foreground";
-	const themeTextMuted = "text-muted-foreground";
-	const themeTextHover = "hover:text-foreground";
-	const themeBgGlass = transparentMode
-		? "bg-transparent border-transparent"
-		: "bg-background/80 backdrop-blur-xl border border-border/50 shadow-lg md:shadow-2xl md:border-accent/10";
+	// With the new white logo, we use dark theme colors for the navbar
+	const themeText = "text-slate-100";
+	const themeTextMuted = "text-slate-400";
+	const themeTextHover = "hover:text-white";
+	const themeBgGlass = "bg-industrial-dark/95 backdrop-blur-xl border border-white/10 shadow-2xl";
 
 	return (
 		<header
@@ -77,26 +75,8 @@ export function Header() {
 						<img
 							src={logo}
 							alt="A Robotics Services Logo"
-							className="w-12 h-12 md:w-14 md:h-14 object-contain transition-transform group-hover:scale-105"
+							className="h-12 md:h-16 w-auto object-contain transition-transform group-hover:scale-105"
 						/>
-						<div className="hidden sm:flex flex-col">
-							<span
-								className={cn(
-									"font-heading font-extrabold text-xl tracking-tight transition-colors",
-									themeText
-								)}
-							>
-								A-<span className="text-accent">Robotics</span>
-							</span>
-							<span
-								className={cn(
-									"text-xs font-medium tracking-wide transition-colors",
-									themeTextMuted
-								)}
-							>
-								Engineering Solutions
-							</span>
-						</div>
 					</Link>
 
 					{/* ── Desktop Navigation ── */}
@@ -118,19 +98,19 @@ export function Header() {
 									</Link>
 									{/* Dropdown Menu */}
 									<div className="absolute left-0 top-full pt-3 w-56 opacity-0 translate-y-2 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 transition-all z-50">
-										<div className="bg-card border border-border shadow-2xl rounded-2xl p-2 relative flex flex-col gap-1">
+										<div className="bg-slate-900 border border-white/10 shadow-2xl rounded-2xl p-2 relative flex flex-col gap-1">
 											<Link
 												to={`${link.href}?brand=all`}
-												className="block px-4 py-3 text-sm font-bold text-foreground hover:bg-accent hover:text-white rounded-xl transition-colors"
+												className="block px-4 py-3 text-sm font-bold text-slate-100 hover:bg-accent hover:text-white rounded-xl transition-colors"
 											>
 												All {link.label}
 											</Link>
-											<div className="h-px bg-border/50 my-1 mx-2"></div>
+											<div className="h-px bg-white/10 my-1 mx-2"></div>
 											{link.dropdown.map((subItem) => (
 												<Link
 													key={subItem.label}
 													to={`${link.href}?category=${encodeURIComponent(subItem.label)}&brand=all`}
-													className="block px-4 py-3 text-sm font-medium text-foreground/70 hover:bg-accent hover:text-white rounded-xl transition-colors"
+													className="block px-4 py-3 text-sm font-medium text-slate-300 hover:bg-accent hover:text-white rounded-xl transition-colors"
 												>
 													{subItem.label}
 												</Link>
@@ -202,7 +182,7 @@ export function Header() {
 
 				{/* ── Mobile Navigation Drawer ── */}
 				{mobileMenuOpen && (
-					<div className="lg:hidden absolute left-0 right-0 top-full bg-background/95 backdrop-blur-xl border-b border-border shadow-2xl p-4 animate-in slide-in-from-top-2">
+					<div className="lg:hidden absolute left-0 right-0 top-full bg-slate-950/95 backdrop-blur-xl border-b border-white/10 shadow-2xl p-4 animate-in slide-in-from-top-2">
 						<nav className="flex flex-col gap-2">
 							{navLinks.map((link) => (
 								<div key={link.label}>
@@ -213,19 +193,19 @@ export function Header() {
 											"flex items-center justify-between px-4 py-3 text-base font-bold rounded-xl transition-colors",
 											location.pathname === link.href
 												? "text-accent bg-accent/10"
-												: "text-foreground/80 hover:text-foreground hover:bg-muted"
+												: "text-slate-200 hover:text-white hover:bg-white/5"
 										)}
 									>
 										{link.label}
 									</Link>
 									{link.dropdown && (
-										<div className="pl-6 py-2 flex flex-col gap-1 border-l-2 border-border ml-6 mt-1 mb-2">
+										<div className="pl-6 py-2 flex flex-col gap-1 border-l-2 border-white/10 ml-6 mt-1 mb-2">
 											{link.dropdown.map((subItem) => (
 												<Link
 													key={subItem.label}
 													to={`${link.href}?category=${encodeURIComponent(subItem.label)}`}
 													onClick={() => setMobileMenuOpen(false)}
-													className="px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent/5 rounded-lg transition-colors"
+													className="px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
 												>
 													{subItem.label}
 												</Link>

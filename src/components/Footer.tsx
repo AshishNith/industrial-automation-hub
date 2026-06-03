@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
+import logo from "@/assets/Logo.png";
 
 const quickLinks = [
   { label: "About Us", href: "/about" },
@@ -28,10 +29,12 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                <span className="text-accent-foreground font-heading font-bold text-xl">A-R</span>
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
+              <img
+                src={logo}
+                alt="A Robotics Services Logo"
+                className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              />
               <div>
                 <span className="font-heading font-semibold text-lg">A-Robotics Services</span>
               </div>
