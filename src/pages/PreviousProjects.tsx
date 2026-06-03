@@ -7,8 +7,28 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, Wrench, ExternalLink, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const PreviousProjects = () => {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aroboticsservices.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Previous Projects",
+        "item": "https://aroboticsservices.in/previous-projects"
+      }
+    ]
+  };
+
   const projects = [
     {
       id: 1,
@@ -128,6 +148,13 @@ const PreviousProjects = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Case Studies & Previous Projects | Industrial Automation"
+        description="Browse our portfolio of completed automation projects, including smart factories, food processing upgrades, pharma clean rooms, and water treatment systems."
+        keywords="industrial automation case studies, PLC projects Mumbai, robotics integration portfolio, SCADA implementation Pune"
+        canonicalPath="/previous-projects"
+        schema={breadcrumbSchema}
+      />
       <Header />
       <main>
         <PageHero

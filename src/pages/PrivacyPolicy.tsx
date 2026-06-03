@@ -1,10 +1,17 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 
 const PrivacyPolicy = () => {
     return (
         <div className="min-h-screen">
+            <SEO
+                title="Privacy Policy"
+                description="Read our privacy policy detailing how we collect, use, and protect your personal data when you visit our website."
+                noindex={true}
+                canonicalPath="/privacy-policy"
+            />
             <Header />
             <main>
                 <PageHero

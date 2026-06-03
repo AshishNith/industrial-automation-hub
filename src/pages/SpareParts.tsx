@@ -5,6 +5,7 @@ import { Search, ChevronDown, ArrowRight, Package } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { allParts, brands, subcategories } from "@/data/sparePartsData";
+import { SEO } from "@/components/SEO";
 
 // Images for product cards
 const partImages = [
@@ -76,8 +77,34 @@ const SpareParts = () => {
     setOpenDropdown(null);
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aroboticsservices.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Spare Parts",
+        "item": "https://aroboticsservices.in/spare-parts"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Robotic Spare Parts & Industrial Components | ABB, FANUC, KUKA"
+        description="Sourcing and sales of genuine robot spare parts and industrial automation components across India. Centralized controller parts, manipulator gears, cables, and harnesses."
+        keywords="ABB robot parts, FANUC spare parts, KUKA manipulator, robot repair parts, central lubrication, robot harness India"
+        canonicalPath="/spare-parts"
+        schema={breadcrumbSchema}
+      />
       <Header />
       <main>
         {/* ─── Compact Page Header ───────────────────────────────────── */}

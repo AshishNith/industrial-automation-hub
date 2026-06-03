@@ -1,10 +1,17 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { SEO } from "@/components/SEO";
 
 const TermsOfService = () => {
     return (
         <div className="min-h-screen">
+            <SEO
+                title="Terms of Service"
+                description="Read our terms of service outlining rules, guidelines, and user agreements for visiting our website and services."
+                noindex={true}
+                canonicalPath="/terms-of-service"
+            />
             <Header />
             <main>
                 <PageHero
